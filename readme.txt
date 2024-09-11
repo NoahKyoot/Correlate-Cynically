@@ -1,4 +1,4 @@
-# Radiology Right Click v1.04
+# Radiology Right Click v1.04 forked from https://github.com/Magnetron85/Radiology-Right-Click
 
 (c) 2024, GitHub user Magnetron85
 
