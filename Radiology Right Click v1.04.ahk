@@ -11,9 +11,10 @@
 
 #SingleInstance, Force
 SetWorkingDir, %A_ScriptDir%
+#include lib/Vis2.ahk 
 
-;OCR dependency
-#include <Vis2>  ; Equivalent to #include .\lib\Vis2.ahk
+; OCR dependency
+
 
 ; Global variables for standard functions
 global DisplayUnits := true
@@ -64,13 +65,7 @@ global g_arteryNames := {"lm": "Left Main"
 global g_levenshteinThreshold := 1.5
 global g_ocrAttempts := 3  ; Number of OCR attempts
 
-; Initialize GDI+
-If !pToken := Gdip_Startup()
-{
-   MsgBox, 48, gdiplus error!, Gdiplus failed to start. Please ensure you have gdiplus on your system
-   ExitApp
-}
-OnExit, Exit
+
 
 ; Load preferences (keep this function at the top)
 LoadPreferencesFromFile() {
@@ -435,8 +430,8 @@ ShowResult(Result) {
     monitorHeight := workAreaBottom - workAreaTop
     
     ; Calculate maximum dimensions for the GUI (50% of monitor width and height)
-    maxWidth := monitorWidth * 0.5
-    maxHeight := monitorHeight * 0.5
+    maxWidth := monitorWidth * 0.25
+    maxHeight := monitorHeight * 0.25
     
     ; Create a temporary GUI to measure text
     Gui, TempMeasure:New, +AlwaysOnTop
